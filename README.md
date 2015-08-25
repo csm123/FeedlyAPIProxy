@@ -30,7 +30,7 @@ This returns [Feedly stream contents](https://developer.feedly.com/v3/streams/#g
 
 ## Configuration variables
 
-Both variables below must be set on the server hosting this app. If you use the Deploy to Heroku button below, you'll be prompted for them.
+The app uses these configruation variables, though none are required. If you use the Deploy to Heroku button below, you'll be prompted for these.
 
 Config Variable | Description
 --------------- | -----------
@@ -44,14 +44,12 @@ Config Variable | Description
 1. Extract into a directory and run `bundle`
 2. Run `bundle exec rackup config.ru`
 
-You can set the configuration varaibles locally, but none are required to test the app in your browser.
-
 ### Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Other Feedly API tasks
 
-The Feedly Cloud API can do a lot, but this app is limted to retrieving a specific RSS feed. Feel free to submit requests under Issues, and I'll do what I can!
+The Feedly Cloud API can do a lot, but this app is limited to retrieving a specific RSS feed. Feel free to submit requests under Issues, and I'll do what I can!
 
 ## Toolset
 
