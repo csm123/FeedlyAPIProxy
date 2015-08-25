@@ -6,6 +6,8 @@ The Feedly Cloud API is not directly accessible via JavaScript, since it does no
 
 ## Usage
 
+### Direct
+
 `https://DOMAIN_FOR_THIS_APP/?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8`
 
 ### JQuery
