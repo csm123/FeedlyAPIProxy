@@ -22,9 +22,9 @@ $.ajax(
 
 Parameter | Description
 --------- | -----------
-`url`    | Required. The URL of the RSS feed. Alternatively, you can specify a `stream_id` as defined in Feedly's API reference.
-`count`   | Optional. The number of entries to retrieve from the feed. Default is `DEFAULT_COUNT` or 10.
-`key`     | Required if the `API_KEY` configuration variable exists. This is not a Feedly API key, but a key that you set that guards access to this app.
+`url`    | The URL of the RSS feed. Alternatively, you can specify a `stream_id` as defined in Feedly's API reference. Either the `url` or `stream_id` is required.
+`count`   | The number of entries to retrieve from the feed. Default is `DEFAULT_COUNT` or 10. Optional.
+`key`     | Set a key that will be required to make a request to this app. This is not a Feedly API key and not passed to Feedly. Required if the `API_KEY` configuration variable exists. 
 
 This returns [Feedly stream contents](https://developer.feedly.com/v3/streams/#get-the-content-of-a-stream) in JSON format, containing an `items` array with [Feedly entries](https://developer.feedly.com/v3/entries/).
 
