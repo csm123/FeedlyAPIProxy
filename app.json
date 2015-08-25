@@ -1,6 +1,6 @@
 {
   "name": "Feedly Cloud API Proxy",
-  "description": "Retrieve RSS feeds directly from JavaSript, using the Feedly Cloud API",
+  "description": "Retrieve RSS feeds directly from JavaScript, using the Feedly Cloud API",
   "repository": "https://github.com/csm123/FeedlyAPIProxy",
   "keywords": ["rss"],
   "env": {
