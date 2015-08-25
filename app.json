@@ -8,6 +8,10 @@
       "description": "A comma-delimited list of domains (no spaces) that are allowed to submit cross-domain requests to the app via JavaScript.  No need for commas if you're specifying just one domain. ex. http://mydomain.com/,http://someotherdomain.com/",
       "required": false
     },
+    "ALLOW_ALL_ORIGINS": {
+      "description": "Set to true to allow any domain to submit cross-domain requests to this app. Not recommended.",
+      "required": false
+    },
     "API_KEY": {
       "description": "Set a key that will be required to make a request to this app. This is not passed to Feedly.",
       "required": false
