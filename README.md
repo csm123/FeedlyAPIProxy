@@ -8,13 +8,13 @@ The Feedly Cloud API is not directly accessible via JavaScript, since it does no
 
 ### Direct
 
-`https://DOMAIN_FOR_THIS_APP/?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8`
+`https://DOMAIN_FOR_THIS_APP/v3/streams/contents?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8`
 
 ### JQuery
 
 ```javascript
 $.ajax(
-  {url: "https://DOMAIN_FOR_THIS_APP/?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8"})
+  {url: "https://DOMAIN_FOR_THIS_APP/v3/streams/contents?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8"})
 .done(function(data) {
   alert("Found " + data.items.length + " items");
 });
