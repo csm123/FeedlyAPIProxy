@@ -32,7 +32,7 @@ Config Variable | Description
 Extract into a directory and run `bundle`. You can set the configuration varaibles locally, but none are required to test the app in your browser.
 
 ### Heroku
-
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Toolset
 
