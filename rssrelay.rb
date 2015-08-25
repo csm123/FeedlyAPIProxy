@@ -3,9 +3,9 @@ class RSSRelay < Sinatra::Application
 
     content_type :json
 
-    origins = ENV["ORIGINS"] && ENV["ORIGINS"].split(",")
-
-    if origins
+    if ENV["ALLOW_ALL_ORIGINS"] && ENV["ALLOW_ALL_ORIGINS"].downcase == "true"
+      cross_origin
+    elsif ENV["ORIGINS"] && ENV["ORIGINS"].split(",")
       cross_origin :allow_origin => origins
     end
 
