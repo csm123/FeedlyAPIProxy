@@ -1,12 +1,22 @@
-# Feedly Cloud API Proxy for Streams
+# Feedly API Proxy for RSS Feeds
 
-This app allows you retrieve the contents of an RSS feed via the Feedly Cloud API, using JavaScript.
+This app allows you retrieve the contents of an RSS feed via the [Feedly Cloud API](https://developer.feedly.com/), using JavaScript on your web site.
 
-The [Feedly Cloud API](https://developer.feedly.com/) is not directly accessible via JavaScript, since it does not allow cross-origin requests.
+The Feedly Cloud API is not directly accessible via JavaScript, since it does not allow cross-origin requests. This app provides a proxy to the Feedly API you can directly access through JavaScript.
 
 ## Usage
 
-`http://yourapp.com/v3/streams/contents?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=10&key=your_key_here`
+`https://DOMAIN_FOR_THIS_APP/?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8`
+
+### JQuery
+
+```javascript
+$.ajax(
+  {url: "https://DOMAIN_FOR_THIS_APP/?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8"})
+.done(function(data) {
+  alert("Found " + data.items.length + " items");
+});
+```
 
 Parameter | Description
 --------- | -----------
@@ -29,13 +39,20 @@ Config Variable | Description
 ## Setup
 
 ### Local
-Extract into a directory and run `bundle`. You can set the configuration varaibles locally, but none are required to test the app in your browser.
+1. Extract into a directory and run `bundle`
+2. Run `bundle exec rackup config.ru`
+
+You can set the configuration varaibles locally, but none are required to test the app in your browser.
 
 ### Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+## Other Feedly API tasks
+
+This app allows you to retrieve the contents of an RSS feed with the Feedly API. The Feedly API contains other functionality, but this app does not support it. Please submit requests to the Issues tab and I'll do my best!
 
 ## Toolset
 
 - Ruby
 - Sinatra
-- Feedlr gem
+- [Feedlr gem](https://github.com/khelll/feedlr)
