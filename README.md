@@ -8,7 +8,6 @@ The [Feedly Cloud API](https://developer.feedly.com/) is not directly accessible
 
 `http://yourapp.com/v3/streams/contents?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=10&key=your_key_here`
 
-<<<<<<< Updated upstream
 Parameter | Description
 --------- | -----------
 `url`    | Required. The URL of the RSS feed. Alternatively, you can specify a `stream_id` as defined in Feedly's API reference.
