@@ -1,0 +1,21 @@
+{
+  "name": "Feedly Cloud API Proxy for Streams",
+  "description": "Retrieve RSS feeds directly from JavaSript, using the Feedly Cloud API",
+  "repository": "https://github.com/csm123/FeedlyAPIProxy",
+  "keywords": ["rss"],
+  "env": {
+    "ORIGINS": {
+      "description": "A comma-delimited list of domains (no spaces) that are allowed to submit cross-domain requests to the app via JavaScript.  No need for commas if you're specifying just one domain. ex. http://mydomain.com/,http://someotherdomain.com/",
+      "required": false
+    },
+    "API_KEY": {
+      "description": "Set a key that will be required to make a request to this app. This is not passed to Feedly.",
+      "required": false
+    },
+    "DEFAULT_COUNT": {
+      "description": "If `count` is not specified for a request, the count that is used.",
+      "required": false,
+      "value": "10"
+    }
+  }
+}
