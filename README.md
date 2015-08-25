@@ -30,7 +30,7 @@ This returns [Feedly stream contents](https://developer.feedly.com/v3/streams/#g
 
 ## Configuration variables
 
-Both variables below must be set on the server hosting this app. It's easy to [set config variables in Heroku](https://devcenter.heroku.com/articles/config-vars).
+Both variables below must be set on the server hosting this app. If you use the Deploy to Heroku button below, you'll be prompted for them.
 
 Config Variable | Description
 --------------- | -----------
