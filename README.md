@@ -51,7 +51,7 @@ You can set the configuration varaibles locally, but none are required to test t
 
 ## Other Feedly API tasks
 
-This app allows you to retrieve the contents of an RSS feed with the Feedly API. The Feedly API contains other functionality, but this app does not support it. Please submit requests to the Issues tab and I'll do my best!
+The Feedly Cloud API can do a lot, but this app is limted to retrieving a specific RSS feed. Feel free to submit requests under Issues, and I'll do what I can!
 
 ## Toolset
 
