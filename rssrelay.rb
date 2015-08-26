@@ -25,8 +25,9 @@ class RSSRelay < Sinatra::Application
     cached_stream_contents = redis.get "stream_contents:#{params[:url]}"
 
     if cached_stream_contents
-      cached_stream_contents[:from_proxy_cache] = "true"
-      return cached_stream_contents
+      parsed_cached_stream_contents = JSON.parse(cached_stream_contents)
+      parsed_cached_stream_contents["from_proxy_cache"] = "true"
+      return parsed_cached_stream_contents.to_json
     else
       client = Feedlr::Client.new
       stream_id = (params[:url] && ("feed/" + params[:url])) || params[:stream_id]
@@ -42,7 +43,7 @@ class RSSRelay < Sinatra::Application
         }
         ).to_json
 
-      redis.setex "stream_contents:#{params[:url]}", 5, stream_contents
+      redis.setex "stream_contents:#{params[:url]}", 3600, stream_contents
       return stream_contents
     end
   end
