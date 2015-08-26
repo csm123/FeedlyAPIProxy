@@ -42,13 +42,13 @@ class RSSRelay < Sinatra::Application
           newerThan: params[:newerThan], 
           continuation: params[:continuation]
         }
-        ).to_json
+        )
 
       if stream_contents.items
-        redis.setex "stream_contents:#{params[:url]}", 3600, stream_contents
+        redis.setex "stream_contents:#{params[:url]}", 3600, stream_contents.to_json
       end
-      
-      return stream_contents
+
+      return stream_contents.to_json
     end
   end
 
