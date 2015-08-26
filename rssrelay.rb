@@ -31,7 +31,8 @@ class RSSRelay < Sinatra::Application
     else
       client = Feedlr::Client.new
       stream_id = (params[:url] && ("feed/" + params[:url])) || params[:stream_id]
-      count = params[:count] || ENV["DEFAULT_COUNT"] || 10
+
+      count = 10 #revisit count
       
       stream_contents = client.stream_entries_contents(
         stream_id, 
