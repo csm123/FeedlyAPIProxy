@@ -1,5 +1,8 @@
 class RSSRelay < Sinatra::Application
 
+  require "open-uri"
+  require "rss"
+
   redis = (ENV["REDIS_URL"] && Redis.new(:url => ENV["REDIS_URL"])) || Redis.new
 
   get "/v3/streams/contents" do
@@ -22,33 +25,28 @@ class RSSRelay < Sinatra::Application
       halt 422, {:error => "A URL or stream ID is required"}.to_json
     end
 
-    cached_stream_contents = redis.get "stream_contents:#{params[:url]}"
+    cached_stream_contents = redis.get "items:#{params[:url]}"
 
     if cached_stream_contents
       parsed_cached_stream_contents = JSON.parse(cached_stream_contents)
       parsed_cached_stream_contents["from_proxy_cache"] = "true"
       return parsed_cached_stream_contents.to_json
     else
-      client = Feedlr::Client.new
-      stream_id = (params[:url] && ("feed/" + params[:url])) || params[:stream_id]
 
-      count = 10 #revisit count
-      
-      stream_contents = client.stream_entries_contents(
-        stream_id, 
-        {
-          count: count, 
-          ranked: params[:ranked], 
-          newerThan: params[:newerThan], 
-          continuation: params[:continuation]
-        }
-        )
+      items = nil
 
-      if stream_contents.items
-        redis.setex "stream_contents:#{params[:url]}", 3600, stream_contents.to_json
+      open(params[:url]) do |rss|
+        feed = RSS::Parser.parse(rss)
+        items = feed.items.map{|item| {:title => item.title, :alternate => [{:href => item.link}], :published => item.pubDate}}
       end
 
-      return stream_contents.to_json
+      items = {:items => items[0, 10]}
+
+      if items
+        redis.setex "items:#{params[:url]}", 3600, items.to_json
+      end
+
+      return items && items.to_json
     end
   end
 
