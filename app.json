@@ -31,5 +31,8 @@
       "required": false,
       "value": "3600"
     }
-  }
+  },
+  "addons": [
+    "redis"
+  ]
 }
