@@ -58,7 +58,18 @@ class RSSRelay < Sinatra::Application
 
       open(params[:url]) do |rss|
         feed = RSS::Parser.parse(rss, false)
-        items = feed.items.map{|item| {:title => item.title, :alternate => [{:href => item.link}], :published => item.pubDate}}
+        items = feed.items.map{|item| 
+          {
+          :title => item.title, 
+          :alternate => [{:href => item.link}], 
+          :published => 
+            if feed.class.to_s == "RSS::RDF"
+              item.dc_date
+            else
+              item.pubDate
+            end
+          }
+        }
       end
 
       number_of_items_to_cache = (ENV["NUMBER_OF_ITEMS_TO_CACHE_PER_FEED"] || 25).to_i
