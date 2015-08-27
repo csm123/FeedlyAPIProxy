@@ -1,6 +1,6 @@
 {
-  "name": "Feedly Cloud API Proxy",
-  "description": "Retrieve RSS feeds directly from JavaScript, using the Feedly Cloud API",
+  "name": "RSS Proxy",
+  "description": "Exposes a JavaScript-friendly API for retrieving RSS feeds, and caches feeds using Redis for quicker response times.",
   "repository": "https://github.com/csm123/FeedlyAPIProxy",
   "keywords": ["rss"],
   "env": {
@@ -13,22 +13,22 @@
       "required": false
     },
     "API_KEY": {
-      "description": "Set a key that will be required to make a request to this app. This is not passed to Feedly.",
+      "description": "Set a key that will be required to make a request to this API.",
       "required": false,
       "generator": "secret"
     },
     "DEFAULT_COUNT": {
-      "description": "If `count` is not specified for a request, the count that is used. If not specified, 25.",
+      "description": "The number of entries returned for a given feed by default. This can be adjusted per request.",
       "required": false,
       "value": "25"
     },
     "NUMBER_OF_ITEMS_TO_CACHE_PER_FEED": {
-      "description": "The number of items/articles per RSS feed to cache in Redis. Requests within the CACHE_LIFE for items of this many or less are served from cache. If not specified, 25.",
+      "description": "The number of enrties per feed to cache in Redis. If not specified, 25.",
       "required": false,
       "value": "25"
     },
     "CACHE_LIFE": {
-      "description": "The amount of time (in seconds) after fetching a feed to serve future requests from the cache. Think about how fresh the feed needs to be for your use case vs. the speed gained from caching. If blank, 3600 or one hour.",
+      "description": "The amount of time (in seconds) after fetching a feed to serve requests from the cache. Think about how fresh the feed needs to be for your use case vs. the speed gained from caching. If blank, 3600 or one hour - meaning that feeds will be updated from the source a maximum of once per hour.",
       "required": false,
       "value": "3600"
     }
