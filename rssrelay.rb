@@ -16,7 +16,7 @@ class RSSRelay < Sinatra::Application
     if ENV["ALLOW_ALL_ORIGINS"] && ENV["ALLOW_ALL_ORIGINS"].downcase == "true"
       cross_origin
     elsif ENV["ORIGINS"] && ENV["ORIGINS"].split(",")
-      cross_origin :allow_origin => origins
+      cross_origin :allow_origin => ENV["ORIGINS"].split(",")
     end
     
     # Require correct API key if specified in config vars
