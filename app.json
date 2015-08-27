@@ -17,9 +17,19 @@
       "required": false
     },
     "DEFAULT_COUNT": {
-      "description": "If `count` is not specified for a request, the count that is used.",
+      "description": "If `count` is not specified for a request, the count that is used. If not specified, 25.",
       "required": false,
-      "value": "10"
+      "value": "25"
+    },
+    "NUMBER_OF_ITEMS_TO_CACHE_PER_FEED": {
+      "description": "The number of items/articles per RSS feed to cache in Redis. Requests within the CACHE_LIFE for items of this many or less are served from cache. If not specified, 25.",
+      "required": false,
+      "value": "25"
+    },
+    "CACHE_LIFE": {
+      "description": "The amount of time (in seconds) after fetching a feed to serve future requests from the cache. Think about how fresh the feed needs to be for your use case vs. the speed gained from caching. If blank, 3600 or one hour.",
+      "required": false,
+      "value": "3600"
     }
   }
 }

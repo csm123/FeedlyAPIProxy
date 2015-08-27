@@ -31,7 +31,7 @@ class RSSRelay < Sinatra::Application
 
     # Take either the count specified in parameters, the count specified in config 
     # vars, or 100
-    number_of_items_requested = (params[:count] || ENV["DEFAULT_COUNT"] || 100).to_i
+    number_of_items_requested = (params[:count] || ENV["DEFAULT_COUNT"] || 25).to_i
 
     # Look for a redis cache of the requested feed
     cached_items = redis.get "items:#{params[:url]}"
