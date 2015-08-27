@@ -14,7 +14,8 @@
     },
     "API_KEY": {
       "description": "Set a key that will be required to make a request to this app. This is not passed to Feedly.",
-      "required": false
+      "required": false,
+      "generator": "secret"
     },
     "DEFAULT_COUNT": {
       "description": "If `count` is not specified for a request, the count that is used. If not specified, 25.",
