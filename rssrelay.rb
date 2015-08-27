@@ -57,7 +57,7 @@ class RSSRelay < Sinatra::Application
       items = nil
 
       open(params[:url]) do |rss|
-        feed = RSS::Parser.parse(rss)
+        feed = RSS::Parser.parse(rss, false)
         items = feed.items.map{|item| {:title => item.title, :alternate => [{:href => item.link}], :published => item.pubDate}}
       end
 
