@@ -1,20 +1,24 @@
-# Feedly API Proxy for RSS Feeds
+# RSS Proxy
 
-This app allows you retrieve the contents of an RSS feed via the [Feedly Cloud API](https://developer.feedly.com/), using JavaScript on your web site.
+RSS Proxy exposes an API for retrieving RSS feeds, and includes caching to increase speed.
 
-The Feedly Cloud API is not directly accessible via JavaScript, since it does not allow cross-origin requests. This app provides a proxy to the Feedly API you can directly access through JavaScript.
+Use cases:
+- Use RSS feeds in your client-side JavaScript (rather difficult to do without a proxy)
+- Speed up your existing RSS retrieval scenarios with simple caching
 
 ## Usage
 
+RSS Proxy accepts GET requests for RSS feeds, and allows URL and number of articles to specified per request.
+
 ### Direct
 
-`https://DOMAIN_FOR_THIS_APP/v3/streams/contents?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8`
+`https://YOUR_DOMAIN/v1/feed?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8&key=YOUR_KEY`
 
 ### JQuery
 
 ```javascript
 $.ajax(
-  {url: "https://DOMAIN_FOR_THIS_APP/v3/streams/contents?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8"})
+  {url: "https://DOMAIN_FOR_THIS_APP/v3/streams/contents?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8&key=YOUR_KEY"})
 .done(function(data) {
   alert("Found " + data.items.length + " items");
 });
@@ -24,35 +28,37 @@ Parameter | Description
 --------- | -----------
 `url`    | The URL of the RSS feed. Alternatively, you can specify a `stream_id` as defined in Feedly's API reference. Either the `url` or `stream_id` is required.
 `count`   | The number of entries to retrieve from the feed. Default is `DEFAULT_COUNT` or 10. Optional.
-`key`     | Set a key that will be required to make a request to this app. This is not a Feedly API key and not passed to Feedly. Required if the `API_KEY` configuration variable exists. 
+`key`     | If you set a key with the `API_KEY` configuration variable, this must match that key for the request to be processed.
 
-This returns [Feedly stream contents](https://developer.feedly.com/v3/streams/#get-the-content-of-a-stream) in JSON format, containing an `items` array with [Feedly entries](https://developer.feedly.com/v3/entries/).
+### Results
+
+**Fill in results here**
 
 ## Configuration variables
 
-The app uses these configruation variables, though none are required. If you use the Deploy to Heroku button below, you'll be prompted for these.
+Only the REDIS_URL is required. If you use the Deploy to Heroku button below, you'll be prompted for these.
 
 Config Variable | Description
 --------------- | -----------
 `ORIGINS`       | A comma-delimited list of domains that are allowed to submit cross-domain requests to the app.  No need for commas if you're specifying just one domain.<br/><br/>Examples:<br/>`http://mydomain.com/,http://someotherdomain.com/`<br/>`http://mydomain.com/`
 `API_KEY`       | Set a key that will be required to make a request to this app.
 `DEFAULT_COUNT` | If `count` is not specified for a request, the count that is used. If this is not specified, the default is 10.
+`REDIS_URL` | Automatically set if you deploy to Heroku below. Specifies the location of the Redis server used for caching.
 
 ## Setup
+
+### Heroku (recommended)
+
+Heroku deployment is easy, and there's a free plan.
+
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ### Local
 1. Extract into a directory and run `bundle`
 2. Run `bundle exec rackup config.ru`
 
-### Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Other Feedly API tasks
-
-The Feedly Cloud API can do a lot, but this app is limited to retrieving a specific RSS feed. Feel free to submit requests under Issues, and I'll do what I can!
-
 ## Toolset
 
 - Ruby
 - Sinatra
-- [Feedlr gem](https://github.com/khelll/feedlr)
