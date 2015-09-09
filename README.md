@@ -1,4 +1,4 @@
-**My focus has shifted to [RSS Proxy](https://github.com/csm123/rssproxy), which does not depend on Feedly. This app is functional, however, so feel free to adapt it for your use.**
+**My focus has shifted to [RSS Proxy](https://github.com/csm123/rssproxy), which does not depend on Feedly so is not subject to its API limits. This app is functional, however, so feel free to adapt it for your use.**
 
 # Feedly API Proxy for RSS Feeds
 
