@@ -38,13 +38,15 @@ Parameter | Description
 {
   "items":
     [
-      {"title": "Title of article", 
-      "link": "Link to article",
-      "published": "Date that article was published"
+      {
+        "title": "Title of article", 
+        "link": "Link to article",
+        "published": "Date that article was published"
       },
-      {"title": "Title of article", 
-      "link": "Link to article",
-      "published": "Date that article was published"
+      {
+        "title": "Title of article", 
+        "link": "Link to article",
+        "published": "Date that article was published"
       }
     ],
   "from_proxy_cache": "true" /* true if from serving this articles from cache */
