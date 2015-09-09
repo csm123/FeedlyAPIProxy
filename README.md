@@ -40,9 +40,12 @@ Only the REDIS_URL is required. If you use the Deploy to Heroku button below, yo
 
 Config Variable | Description
 --------------- | -----------
-`ORIGINS`       | A comma-delimited list of domains that are allowed to submit cross-domain requests to the app.  No need for commas if you're specifying just one domain.<br/><br/>Examples:<br/>`http://mydomain.com/,http://someotherdomain.com/`<br/>`http://mydomain.com/`
-`API_KEY`       | Set a key that will be required to make a request to this app.
-`DEFAULT_COUNT` | If `count` is not specified for a request, the count that is used. If this is not specified, the default is 10.
+`ORIGINS`       | A comma-delimited list of domains that are allowed to submit cross-domain requests to the app.  No need for commas if you're specifying just one domain. If blank, no cross-origin requests will be accepted, unless `ALLOW_ALL_ORIGINS` is set to `true` <br/><br/>Examples:<br/>`http://mydomain.com/,http://someotherdomain.com/`<br/>`http://mydomain.com/`
+`ALLOW_ALL_ORIGINS` | Set to `true` to allow any domain to submit cross-domain requests to this app. Not recommended.
+`API_KEY`       | Set a key that will be required to make a request to this API.
+`DEFAULT_COUNT` | The number of entries returned for a given feed by default. This can be adjusted per request. If not specified here or in the request, the default is 10.
+`NUMBER_OF_ITEMS_TO_CACHE_PER_FEED` | The number of enrties per feed to cache in Redis. If not specified, 25.
+`CACHE_LIFE` | The amount of time (in seconds) after fetching a feed to serve requests from the cache. Think about how fresh the feed needs to be for your use case vs. the speed gained from caching. If blank, 3600 or one hour - meaning that feeds will be updated from the source a maximum of once per hour.
 `REDIS_URL` | Automatically set if you deploy to Heroku below. Specifies the location of the Redis server used for caching.
 
 ## Setup
@@ -50,7 +53,6 @@ Config Variable | Description
 ### Heroku (recommended)
 
 Heroku deployment is easy, and there's a free plan.
-
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
