@@ -14,8 +14,7 @@
     },
     "API_KEY": {
       "description": "Set a key that will be required to make a request to this API.",
-      "required": false,
-      "generator": "secret"
+      "required": false
     },
     "DEFAULT_COUNT": {
       "description": "The number of entries returned for a given feed by default. This can be adjusted per request.",
