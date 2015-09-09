@@ -18,7 +18,7 @@ RSS Proxy accepts GET requests for RSS feeds, and allows URL and number of artic
 
 ```javascript
 $.ajax(
-  {url: "https://DOMAIN_FOR_THIS_APP/v3/streams/contents?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8&key=YOUR_KEY"})
+  {url: "https://DOMAIN_FOR_THIS_APP/v1/feed?url=http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml&count=8&key=YOUR_KEY"})
 .done(function(data) {
   alert("Found " + data.items.length + " items");
 });
