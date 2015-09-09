@@ -1,3 +1,5 @@
+**My focus has shifted to [RSS Proxy](https://github.com/csm123/rssproxy), which does not depend on Feedly. This app is functional, however, so feel free to adapt it for your use.**
+
 # Feedly API Proxy for RSS Feeds
 
 This app allows you retrieve the contents of an RSS feed via the [Feedly Cloud API](https://developer.feedly.com/), using JavaScript on your web site.
