@@ -34,6 +34,31 @@ Parameter | Description
 
 **Fill in results here**
 
+```javascript
+{
+  "items":
+    [
+      {"title": "Title of article", 
+      "link": "Link to article",
+      "published": "Date that article was published"
+      },
+      {"title": "Title of article", 
+      "link": "Link to article",
+      "published": "Date that article was published"
+      }
+    ],
+  "from_proxy_cache": "true" /* true if from serving this articles from cache */
+}
+```
+
+### Error results
+
+```javascript
+{
+  "error": "Invalid key"
+}
+```
+
 ## Configuration variables
 
 Only the REDIS_URL is required. If you use the Deploy to Heroku button below, you'll be prompted for these.
