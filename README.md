@@ -52,7 +52,9 @@ Config Variable | Description
 
 ### Heroku (recommended)
 
-Heroku deployment is easy, and there's a free plan.
+Heroku deployment is easy and free using the button below. It includes the app itself and a Redis server.
+
+You may get an internal server error for the first few minutes while Redis loads.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
